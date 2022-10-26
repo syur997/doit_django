@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>Yurim Blog</h1>
-{% for p in posts %}
+{% for p in post_list %}
     <hr/>
                 <!-- '/blog/2' -->
     <h2><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
