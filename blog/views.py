@@ -12,4 +12,13 @@ def index(request):
         request,
         'blog/index.html',
         {'posts': posts})
+
+def single_post_page(request, pk):
+    post = Post.objects.get(pk=pk)
+
+    return render(
+        request,
+        'blog/single_post_page.html',
+        {'post':post}
+    )
     # 파이썬 파일을 hmtl로 보내야하니까 렌더링해라
