@@ -1,17 +1,127 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <title>{{ post.title }} - Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-<nav>
-    <a href="/blog/">Blog</a>
-</nav>
-<h1>{{ post.title }}</h1>
-<h4>{{ post.created_at }}</h4>
-<p>{{ post.content }}</p>
+<div class="container contents">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">❤</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled">Disabled</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- Page content-->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{ post.title }}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">{{ post.created_at }}</div>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="https://picsum.photos/900/300/?{{ p.pk }}" alt="..." /></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4">{{ post.content }}</p>
+                </section>
+            </article>
+            <!-- Comments section-->
+            <section class="mb-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <!-- Comment form-->
+                        <form class="mb-4"><textarea class="form-control" rows="3" placeholder="댓글을 남겨보세용✏️"></textarea></form>
+                        <!-- Comment with nested comments-->
+                        <div class="d-flex mb-4">
+                            <!-- Parent comment-->
+                            <div class="flex-shrink-0"><img class="rounded-circle" src="data:image/png;base64,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" alt="..." /></div>
+                            <div class="ms-3">
+                                <div class="fw-bold">멋쟁이</div>
+                                안녕 유림아?
+                            </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Side widgets-->
+        <div class="col-lg-4">
+            <!-- Search widget-->
+            <div class="card mb-4">
+                <div class="card-header">Search</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
+                        <button class="btn btn-primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Categories widget-->
+            <div class="card mb-4">
+                <div class="card-header">Categories</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">Web Design</a></li>
+                                <li><a href="#!">HTML</a></li>
+                                <li><a href="#!">Freebies</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <ul class="list-unstyled mb-0">
+                                <li><a href="#!">JavaScript</a></li>
+                                <li><a href="#!">CSS</a></li>
+                                <li><a href="#!">Tutorials</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Side widget-->
+            <div class="card mb-4">
+                <div class="card-header">Side Widget</div>
+                <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
 <hr/>
-<h3>여기에 댓글이 들어올 수 있겠죠?</h3>
 </body>
 </html>
