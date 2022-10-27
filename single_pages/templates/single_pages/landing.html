@@ -1,17 +1,12 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>송유림입니다!</title>
-</head>
-<body>
-<nav>
-    <a href="/blog/">Blog</a>
-    <a href="/about_me/"About me></a>
-</nav>
+{% extends 'base.html' %}
+{% load static %}
 
-<h1>안녕하세요. 송유림입니다.</h1>
-<h2>대문페이지</h2>
-<h3>아직 만들지 않음ㅋ</h3>
-</body>
-</html>
+{% block main_area %}
+{% include 'navbar.html' %}
+
+<h1>Yurim Home🏡</h1>
+<div class="card mb-4">
+    <div class="flex-shrink-0"><img class="square" src="http://www.artinsight.co.kr/data/news/1907/3553982061_A6Jnbhpr_1411.jpg" alt="..." /></div>
+</div>
+
+{% endblock main_area %}

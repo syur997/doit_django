@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <title>개발자 송유림입니다.</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
 
-<nav>
-    <a href="/blog/">Blog</a>
-    <a href="/about_me/"About me></a>
-</nav>
+{% block main_area %}
+{% include 'navbar.html' %}
 
-<h1>안녕하세요. 송유림입니다.</h1>
-<h2>이력</h2>
-<h2>Portfolio</h2>
-<h3>아직 공사중입니다. ㅋ</h3>
-</body>
-</html>
+<h1>나는야 송유림👸🏻</h1>
+<p style="text-align:center">
+    <img class="square" src="https://postfiles.pstatic.net/MjAyMjA5MTFfMTk5/MDAxNjYyODk4ODk1OTI2.NxXXxw-3z7hSkCUPy974PhD1lGaV0IEIs2jx7tp2Kf0g.CRO22U_5MOVry17KzEMNMeTYTLnmzRaU5OI7PQrcw7Ag.JPEG.syur997/C0F61F36-BEC0-4625-8100-79CC16A25A2E-29745-00000E2C680D5934.jpg?type=w580" alt="..." />
+</p>
+
+{% endblock main_area %}
